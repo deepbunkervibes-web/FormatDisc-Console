@@ -1,0 +1,203 @@
+
+:root {
+  --color-bg: #030305;
+  --color-accent: #00f2ff;
+  --color-accent-glow: rgba(0, 242, 255, 0.4);
+  --color-success: #00ff9d;
+  --color-warning: #f1c40f;
+  --color-danger: #ff4d4d;
+  --color-border: #1a1b23;
+  --color-border-strong: #2a2b35;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-dim: #454545;
+  --font-mono: 'Fira Code', 'Courier New', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-canvas {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* CRT Scanline Authentic Overlay */
+.crt-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.01));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* Artifact Card Styles */
+.artifact-card {
+  background: #000;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  cursor: pointer;
+}
+
+.artifact-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.artifact-card.sealed {
+  border-color: var(--color-success);
+}
+
+.artifact-card.focused {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  aspect-ratio: unset;
+  cursor: default;
+  box-shadow: 0 0 100px rgba(0,0,0,1), 0 0 40px var(--color-accent-glow);
+  border-color: var(--color-accent);
+  z-index: 2000;
+  animation: zoom-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.artifact-seal-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  border: 3px double var(--color-success);
+  color: var(--color-success);
+  padding: 12px 24px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 50;
+  letter-spacing: 6px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* Navigation & Layout */
+.mobile-bottom-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(3,3,5,0.95);
+  border-top: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: var(--color-text-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 60px;
+}
+
+.nav-item.active {
+  color: var(--color-accent);
+}
+
+.nav-item.active .icon-bg {
+  border-color: var(--color-accent);
+  background: rgba(0, 242, 255, 0.05);
+}
+
+.icon-bg {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  letter-spacing: -2px;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* Focused Overlay Background */
+.focused-artifact-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Integrity Pulse */
+.integrity-pulse {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: scan-vertical 4s infinite ease-in-out;
+  opacity: 0.3;
+  z-index: 40;
+}
+
+@keyframes scan-vertical {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { top: 100%; opacity: 0; }
+}
