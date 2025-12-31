@@ -12,6 +12,18 @@
   --color-text-secondary: #a0a0a0;
   --color-text-dim: #454545;
   --font-mono: 'Fira Code', 'Courier New', monospace;
+
+  /* Simulator specific colors - ensure these don't clash with main app */
+  --simulator-bg: #0b0b0c;
+  --simulator-panel: #0f1113;
+  --simulator-muted: #9aa0a6;
+  --simulator-blue: #0a84ff;
+  --simulator-assistant: #1b1d1f;
+  --simulator-success: #2ecc71;
+  --simulator-warning: #ffb84d;
+  --simulator-error: #ff5c5c;
+  --simulator-radius: 12px;
+  --simulator-font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 body {
@@ -201,3 +213,168 @@ body {
   90% { opacity: 0.6; }
   100% { top: 100%; opacity: 0; }
 }
+
+/* Simulator Specific Styles - Encapsulated within .simulator-container */
+.simulator-container {
+  /* Override main app body styles when simulator is active */
+  color: #e6eef3;
+  font-family: var(--simulator-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+.simulator-container * {
+  box-sizing: border-box;
+}
+
+/* Layout */
+.simulator-app {
+  display:flex;
+  height:100%; /* Use 100% of simulator-container height */
+  width:100%;
+  overflow:hidden;
+  background:var(--simulator-bg); /* Apply background here */
+}
+
+/* Sidebar (desktop only) */
+.simulator-sidebar {
+  width:260px;
+  background:var(--simulator-panel);
+  border-right:1px solid rgba(255,255,255,0.02);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+@media (max-width: 900px){
+  .simulator-sidebar{display:none}
+}
+
+/* Chat area */
+.simulator-chatWrap {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+/* Message list */
+.simulator-messageList {
+  padding:20px;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  scroll-behavior:smooth;
+}
+
+/* input area */
+.simulator-composer {
+  padding:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border-top:1px solid rgba(255,255,255,0.02);
+  display:flex;
+  gap:8px;
+}
+.simulator-input {
+  flex:1;
+  background:rgba(255,255,255,0.02);
+  border-radius:10px;
+  padding:10px 12px;
+  color:inherit;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Message bubbles */
+.simulator-msg {
+  max-width:78%;
+  padding:12px 14px;
+  border-radius:14px;
+  line-height:1.4;
+  display:inline-block;
+  position:relative;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.simulator-msg.simulator-user {
+  margin-left:auto;
+  background:var(--simulator-blue);
+  color:white;
+  border-bottom-right-radius:6px;
+}
+.simulator-msg.simulator-assistant {
+  margin-right:auto;
+  background:var(--simulator-assistant);
+  color:#cfe3ee;
+  border-bottom-left-radius:6px;
+}
+.simulator-msg.simulator-system {
+  max-width:100%;
+  margin:0 auto;
+  background:transparent;
+  color:var(--simulator-muted);
+  text-align:center;
+  padding:8px 12px;
+  border-radius:6px;
+  font-size:13px;
+}
+
+/* grouping: small vertical gap already handled */
+
+/* status badge */
+.simulator-badge {
+  position:absolute;
+  bottom:-16px;
+  right:8px;
+  font-size:12px;
+  color:var(--simulator-muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.simulator-pulse {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  animation:simulator-pulse 1.2s infinite;
+  background:var(--simulator-muted);
+}
+@keyframes simulator-pulse {
+  0%{transform:scale(1);opacity:1}
+  70%{transform:scale(1.6);opacity:0.35}
+  100%{transform:scale(2);opacity:0}
+}
+
+/* status color dots */
+.simulator-dot.simulator-success{background:var(--simulator-success)}
+.simulator-dot.simulator-warning{background:var(--simulator-warning)}
+.simulator-dot.simulator-error{background:var(--simulator-error)}
+.simulator-dot.simulator-executing{background:var(--simulator-muted)}
+
+/* small footer timestamp on hover */
+.simulator-msg .simulator-ts {
+  display:none;
+  font-size:11px;
+  color:var(--simulator-muted);
+  margin-top:6px;
+}
+.simulator-msg:hover .simulator-ts{display:block}
+
+/* command palette */
+.simulator-cmdPalette {
+  position:fixed;
+  left:50%;
+  top:20%;
+  transform:translateX(-50%);
+  background:var(--simulator-panel);
+  padding:10px;
+  border-radius:8px;
+  width:min(720px,92%);
+  display:none;
+  box-shadow:0 6px 24px rgba(0,0,0,0.6);
+}
+.simulator-cmdPalette.simulator-show{display:block}
+
+/* small helpers */
+.simulator-small{font-size:12px;color:var(--simulator-muted)}

@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -30,23 +29,11 @@ interface State {
  * properties like state, props, and setState are correctly inherited.
  */
 class ErrorBoundary extends Component<Props, State> {
-  // Explicitly declaring state helps the TypeScript compiler identify the property 
-  // when standard inheritance from Component generics fails in certain environments.
-  public state: State = {
+  // Fix: Initialize state as a class property for robust type inference of `this.state`, `this.props`, and `this.setState`.
+  state: State = {
     hasError: false,
     error: undefined
   };
-
-  constructor(props: Props) {
-    super(props);
-    // Standard initialization of the component state.
-    this.state = {
-      hasError: false,
-      error: undefined
-    };
-    // Binding the reset handler to the class instance.
-    this.handleReset = this.handleReset.bind(this);
-  }
 
   /**
    * Updates state so the next render shows the fallback UI when an error is caught.
@@ -65,8 +52,7 @@ class ErrorBoundary extends Component<Props, State> {
   /**
    * Resets the error state and reloads the application context.
    */
-  public handleReset() {
-    // Accessing setState from the Component base class.
+  public handleReset = () => {
     this.setState({ hasError: false, error: undefined });
     window.location.reload();
   }

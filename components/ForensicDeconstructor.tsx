@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -112,7 +113,7 @@ export const B3DeconstructorPanel = ({ blob, onComplete }: B3DeconstructorPanelP
         const start = Date.now();
         dispatch({ type: 'INIT_SCAN', timestamp: start });
 
-        const timeouts: NodeJS.Timeout[] = [];
+        const timeouts: number[] = []; // Changed NodeJS.Timeout[] to number[]
 
         TIMELINE.forEach(event => {
             const t = setTimeout(() => {

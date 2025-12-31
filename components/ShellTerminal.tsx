@@ -27,6 +27,19 @@ export const ShellTerminal = ({ onDeploy, onIntercept, isLoading }: ShellTermina
     const [isLoginMode, setIsLoginMode] = useState(false);
     
     const terminalEndRef = useRef<HTMLDivElement>(null);
+    const draftInputRef = useRef("");
+
+    // Load history from storage on mount
+    useEffect(() => {
+        const stored = localStorage.getItem('slavko-shell-history');
+        if (stored) {
+            try {
+                setCmdLog(JSON.parse(stored));
+            } catch (e) {
+                console.error("Failed to parse shell history");
+            }
+        }
+    }, []);
 
     // Initial Boot Sequence Log
     useEffect(() => {
@@ -211,8 +224,13 @@ export const ShellTerminal = ({ onDeploy, onIntercept, isLoading }: ShellTermina
                 setHistory(prev => [...prev, `Unknown command: ${command}. Type 'help' for assist.`, ""]);
         }
 
-        setCmdLog(prev => [{ input: trimmed, timestamp, type: cmdType }, ...prev].slice(0, 50));
+        setCmdLog(prev => {
+            const newState = [{ input: trimmed, timestamp, type: cmdType }, ...prev].slice(0, 50);
+            localStorage.setItem('slavko-shell-history', JSON.stringify(newState));
+            return newState;
+        });
         setHistoryIdx(-1);
+        draftInputRef.current = "";
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -221,6 +239,10 @@ export const ShellTerminal = ({ onDeploy, onIntercept, isLoading }: ShellTermina
             setInput("");
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
+            if (historyIdx === -1) {
+                // Save current input as draft before moving up
+                draftInputRef.current = input;
+            }
             const nextIdx = historyIdx + 1;
             if (nextIdx < cmdLog.length) {
                 setHistoryIdx(nextIdx);
@@ -234,7 +256,8 @@ export const ShellTerminal = ({ onDeploy, onIntercept, isLoading }: ShellTermina
                 setInput(cmdLog[nextIdx].input);
             } else {
                 setHistoryIdx(-1);
-                setInput("");
+                // Restore draft when returning to bottom
+                setInput(draftInputRef.current);
             }
         }
     };

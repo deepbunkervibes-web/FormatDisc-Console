@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kako zaštititi računalo od ransomware napada | Format Disc</title>
+    <meta name="description" content="Saznajte koje su najbolje prakse za zaštitu vaših podataka od sve češćih ransomware napada. Praktični savjeti i alati za prevenciju.">
+    <meta name="keywords" content="ransomware, zaštita podataka, sigurnosna kopija, cybersecurity, malware, antivirusna zaštita">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.svg" alt="Format Disc Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html#usluge">Usluge</a></li>
+                    <li><a href="../index.html#o-nama">O nama</a></li>
+                    <li><a href="../index.html#projekti">Projekti</a></li>
+                    <li><a href="index.html" class="active">Blog</a></li>
+                    <li><a href="../index.html#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <button id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Blog Post Header -->
+        <div class="blog-post-header">
+            <span class="post-category">Sigurnost</span>
+            <h1>Kako zaštititi računalo od ransomware napada u 2025. godini</h1>
+            <div class="blog-post-meta">
+                <div class="blog-post-meta-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>15. kolovoza 2025.</span>
+                </div>
+                <div class="blog-post-meta-item">
+                    <i class="far fa-user"></i>
+                    <span>Ivan Horvat</span>
+                </div>
+                <div class="blog-post-meta-item">
+                    <i class="far fa-clock"></i>
+                    <span class="reading-time">8 min čitanja</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Post Image -->
+        <div class="blog-post-image">
+            <img src="../images/blog-1.jpg" alt="Ransomware zaštita">
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="blog-post-content">
+            <div class="table-of-contents">
+                <h3>Sadržaj članka</h3>
+                <ul>
+                    <li><a href="#uvod">Što je ransomware i zašto je opasan?</a></li>
+                    <li><a href="#prevencija">Preventivne mjere zaštite</a></li>
+                    <li><a href="#backup">Važnost sigurnosnih kopija</a></li>
+                    <li><a href="#edukacija">Edukacija korisnika</a></li>
+                    <li><a href="#alati">Preporučeni alati za zaštitu</a></li>
+                    <li><a href="#reakcija">Što učiniti ako ste već zaraženi</a></li>
+                    <li><a href="#zakljucak">Zaključak</a></li>
+                </ul>
+            </div>
+
+            <h2 id="uvod">Što je ransomware i zašto je opasan?</h2>
+            <p>Ransomware je vrsta zlonamjernog softvera (malware) koji kriptira podatke na računalu ili mreži, čineći ih nedostupnima korisniku. Nakon što su podaci kriptirani, napadači zahtijevaju plaćanje otkupnine (najčešće u kriptovalutama) u zamjenu za ključ za dekriptiranje. Ova vrsta napada postala je jedna od najraširenijih i najskupljih prijetnji za tvrtke i pojedince u posljednjih nekoliko godina.</p>
+
+            <p>U 2025. godini, ransomware napadi postali su još sofisticiraniji, s napadačima koji koriste napredne tehnike poput:</p>
+
+            <ul>
+                <li><strong>Double extortion</strong> - napadači ne samo da kriptiraju podatke, već ih i kradu, prijeteći da će ih objaviti ako otkupnina nije plaćena</li>
+                <li><strong>Supply chain napadi</strong> - napadači ciljaju dobavljače softvera kako bi distribuirali ransomware kroz legitimne nadogradnje</li>
+                <li><strong>Ransomware-as-a-Service (RaaS)</strong> - kriminalne skupine iznajmljuju svoj ransomware drugim napadačima, šireći prijetnju</li>
+                <li><strong>AI-powered napadi</strong> - korištenje umjetne inteligencije za automatizaciju i optimizaciju napada</li>
+            </ul>
+
+            <p>Posljedice ransomware napada mogu biti katastrofalne: gubitak kritičnih podataka, prekid poslovanja, financijski gubici zbog plaćanja otkupnine, troškovi oporavka sustava, te reputacijska šteta. Prema najnovijim istraživanjima, prosječni trošak ransomware napada u 2025. godini iznosi preko 5 milijuna dolara za srednje velike tvrtke.</p>
+
+            <h2 id="prevencija">Preventivne mjere zaštite</h2>
+            <p>Prevencija je ključna u borbi protiv ransomware napada. Evo nekoliko ključnih preventivnih mjera koje možete poduzeti:</p>
+
+            <h3>Redovito ažuriranje softvera</h3>
+            <p>Napadači često iskorištavaju poznate sigurnosne propuste u zastarjelim verzijama softvera. Redovito ažuriranje operativnog sustava, aplikacija i firmware-a ključno je za zatvaranje sigurnosnih rupa koje bi napadači mogli iskoristiti.</p>
+
+            <p>Postavite automatska ažuriranja gdje god je to moguće, posebno za:</p>
+            <ul>
+                <li>Operativni sustav (Windows, macOS, Linux)</li>
+                <li>Web preglednike i njihove dodatke</li>
+                <li>Uredske aplikacije</li>
+                <li>PDF čitače</li>
+                <li>Antivirusne programe</li>
+            </ul>
+
+            <h3>Implementacija snažnih sigurnosnih rješenja</h3>
+            <p>Koristite višeslojni pristup sigurnosti koji uključuje:</p>
+            <ul>
+                <li><strong>Next-generation antivirus (NGAV)</strong> - moderni antivirusni programi koji koriste strojno učenje i bihevioralnu analizu za otkrivanje prijetnji</li>
+                <li><strong>Endpoint Detection and Response (EDR)</strong> - rješenja koja kontinuirano prate aktivnosti na krajnjim točkama i mogu brzo reagirati na sumnjive aktivnosti</li>
+                <li><strong>Filtriranje e-pošte</strong> - napredni filtri koji mogu blokirati phishing pokušaje i zlonamjerne privitke</li>
+                <li><strong>Web filtriranje</strong> - blokiranje pristupa poznatim zlonamjernim web stranicama</li>
+                <li><strong>Vatrozid nove generacije</strong> - za kontrolu mrežnog prometa i blokiranje sumnjive komunikacije</li>
+            </ul>
+
+            <h3>Ograničavanje korisničkih prava</h3>
+            <p>Princip najmanjih privilegija (Principle of Least Privilege) ključan je za ograničavanje potencijalne štete u slučaju kompromitacije. Korisnici bi trebali imati samo ona prava koja su im potrebna za obavljanje svakodnevnih zadataka.</p>
+
+            <p>Administratorske privilegije trebaju biti strogo kontrolirane i korištene samo kada je to neophodno. Ovo može značajno smanjiti mogućnost da ransomware zarazi cijeli sustav.</p>
+
+            <h2 id="backup">Važnost sigurnosnih kopija</h2>
+            <p>Redovite sigurnosne kopije (backup) su vaša posljednja linija obrane protiv ransomware napada. Čak i ako sve preventivne mjere zakažu, dobra strategija sigurnosnih kopija može vam omogućiti oporavak bez plaćanja otkupnine.</p>
+
+            <h3>3-2-1 pravilo sigurnosnih kopija</h3>
+            <p>Slijedite 3-2-1 pravilo za maksimalnu zaštitu:</p>
+            <ul>
+                <li><strong>3</strong> - Imajte najmanje tri kopije vaših podataka (original + dvije kopije)</li>
+                <li><strong>2</strong> - Pohranite kopije na najmanje dva različita tipa medija (npr. eksterni disk i cloud)</li>
+                <li><strong>1</strong> - Čuvajte barem jednu kopiju izvan lokacije (offsite backup)</li>
+            </ul>
+
+            <p>U 2025. godini, preporučujemo i dodatno "0" pravilo - barem jedna kopija treba biti offline (air-gapped), odnosno fizički odvojena od mreže kada nije u procesu stvaranja sigurnosne kopije.</p>
+
+            <h3>Testiranje oporavka</h3>
+            <p>Nije dovoljno samo imati sigurnosne kopije - morate redovito testirati proces oporavka kako biste bili sigurni da možete brzo vratiti podatke u slučaju napada. Mnoge organizacije otkriju da njihove sigurnosne kopije nisu potpune ili funkcionalne tek kada je prekasno.</p>
+
+            <p>Preporučujemo kvartalno testiranje oporavka ključnih sustava i podataka.</p>
+
+            <h2 id="edukacija">Edukacija korisnika</h2>
+            <p>Ljudi su često najslabija karika u sigurnosnom lancu. Edukacija korisnika o prepoznavanju i izbjegavanju prijetnji ključna je za prevenciju ransomware napada.</p>
+
+            <h3>Prepoznavanje phishing napada</h3>
+            <p>Phishing e-mailovi i dalje su jedan od najčešćih vektora za distribuciju ransomware-a. Naučite korisnike da prepoznaju sumnjive e-mailove:</p>
+            <ul>
+                <li>Neočekivane poruke koje stvaraju osjećaj hitnosti</li>
+                <li>Gramatičke i pravopisne pogreške</li>
+                <li>Nepodudaranje e-mail adresa i imena pošiljatelja</li>
+                <li>Sumnjivi privitci ili linkovi</li>
+                <li>Zahtjevi za osobnim ili financijskim podacima</li>
+            </ul>
+
+            <h3>Sigurno pregledavanje weba</h3>
+            <p>Naučite korisnike da:</p>
+            <ul>
+                <li>Provjeravaju URL adrese prije unosa osjetljivih podataka</li>
+                <li>Izbjegavaju klikanje na pop-up prozore</li>
+                <li>Ne preuzimaju softver s neprovjerenih izvora</li>
+                <li>Koriste sigurne veze (HTTPS) kada je to moguće</li>
+                <li>Budu oprezni s javnim Wi-Fi mrežama</li>
+            </ul>
+
+            <h3>Redoviti sigurnosni treninzi</h3>
+            <p>Organizirajte redovite sigurnosne treninge i simulacije phishing napada kako biste održali visoku razinu svijesti o sigurnosti. U 2025. godini, interaktivni treninzi s gamifikacijom pokazali su se najučinkovitijima za podizanje svijesti o sigurnosti.</p>
+
+            <h2 id="alati">Preporučeni alati za zaštitu</h2>
+            <p>Na temelju našeg iskustva i testiranja, evo nekoliko preporučenih alata za zaštitu od ransomware napada u 2025. godini:</p>
+
+            <h3>Antivirusna i anti-malware rješenja</h3>
+            <ul>
+                <li><strong>CrowdStrike Falcon</strong> - Vrhunsko EDR rješenje s naprednom zaštitom od ransomware-a</li>
+                <li><strong>Bitdefender GravityZone</strong> - Sveobuhvatno rješenje s višeslojnom zaštitom</li>
+                <li><strong>Malwarebytes Endpoint Protection</strong> - Odlično rješenje za manje tvrtke i pojedince</li>
+                <li><strong>SentinelOne</strong> - AI-powered zaštita s automatiziranim odgovorom na incidente</li>
+            </ul>
+
+            <h3>Backup rješenja</h3>
+            <ul>
+                <li><strong>Veeam Backup & Replication</strong> - Robusno enterprise rješenje za sigurnosne kopije</li>
+                <li><strong>Acronis Cyber Protect</strong> - Kombinira backup i cybersecurity funkcionalnosti</li>
+                <li><strong>Backblaze</strong> - Jednostavno cloud backup rješenje za pojedince i manje tvrtke</li>
+                <li><strong>Synology Active Backup</strong> - Odlično rješenje za korisnike Synology NAS uređaja</li>
+            </ul>
+
+            <h3>Email sigurnosna rješenja</h3>
+            <ul>
+                <li><strong>Proofpoint Email Protection</strong> - Napredna zaštita od phishinga i zlonamjernih privitaka</li>
+                <li><strong>Mimecast</strong> - Sveobuhvatna email sigurnost i arhiviranje</li>
+                <li><strong>Microsoft Defender for Office 365</strong> - Dobra opcija za korisnike Microsoft 365 usluga</li>
+            </ul>
+
+            <h2 id="reakcija">Što učiniti ako ste već zaraženi</h2>
+            <p>Ako sumnjate da ste zaraženi ransomware-om, brza reakcija je ključna za minimiziranje štete:</p>
+
+            <h3>Izolacija zaraženog sustava</h3>
+            <p>Odmah isključite zaraženo računalo iz mreže (izvucite mrežni kabel ili isključite Wi-Fi) kako biste spriječili širenje zaraze na druge sustave. Nemojte isključivati računalo jer to može otežati forenzičku analizu i potencijalni oporavak.</p>
+
+            <h3>Identifikacija ransomware-a</h3>
+            <p>Pokušajte identificirati o kojem se ransomware-u radi. Alati poput ID Ransomware mogu vam pomoći u identifikaciji na temelju poruke o otkupnini, ekstenzije datoteka ili uzorka kriptirane datoteke.</p>
+
+            <h3>Procjena štete</h3>
+            <p>Utvrdite opseg zaraze i koje su datoteke kompromitirane. Ovo će vam pomoći u planiranju oporavka.</p>
+
+            <h3>Oporavak iz sigurnosnih kopija</h3>
+            <p>Ako imate ažurne sigurnosne kopije, oporavak je najbolja opcija. Prije oporavka, osigurajte da je sustav potpuno očišćen od malware-a kako se zaraza ne bi ponovila.</p>
+
+            <h3>Plaćanje otkupnine - posljednja opcija</h3>
+            <p>Plaćanje otkupnine se općenito ne preporučuje jer:</p>
+            <ul>
+                <li>Ne garantira da ćete dobiti ključ za dekriptiranje</li>
+                <li>Financira kriminalne aktivnosti</li>
+                <li>Označava vas kao metu za buduće napade</li>
+            </ul>
+            <p>Međutim, u nekim kritičnim situacijama, kada nema drugih opcija, organizacije se odlučuju za plaćanje. Ako razmišljate o ovoj opciji, preporučujemo konzultacije sa stručnjacima za cybersecurity i pravnim savjetnicima.</p>
+
+            <h3>Prijava nadležnim tijelima</h3>
+            <p>Prijavite incident nadležnim tijelima poput:</p>
+            <ul>
+                <li>Nacionalni CERT (www.cert.hr)</li>
+                <li>MUP - Služba kibernetičke sigurnosti</li>
+                <li>Agencija za zaštitu osobnih podataka (ako su kompromitirani osobni podaci)</li>
+            </ul>
+
+            <h2 id="zakljucak">Zaključak</h2>
+            <p>Ransomware napadi nastavljaju evoluirati i predstavljaju ozbiljnu prijetnju za organizacije i pojedince. Međutim, kombinacijom tehničkih mjera zaštite, edukacije korisnika i robusne strategije sigurnosnih kopija, možete značajno smanjiti rizik i potencijalnu štetu.</p>
+
+            <p>Ključ uspješne zaštite od ransomware-a je višeslojni pristup sigurnosti i proaktivno djelovanje. Nemojte čekati da postanete žrtva - implementirajte preporučene mjere zaštite danas.</p>
+
+            <p>Ako trebate pomoć u implementaciji sigurnosnih mjera ili oporavku nakon ransomware napada, Format Disc tim stručnjaka stoji vam na raspolaganju. Kontaktirajte nas za besplatnu konzultaciju o sigurnosti vašeg IT sustava.</p>
+
+            <div class="post-tags">
+                <span>Oznake:</span>
+                <a href="#">ransomware</a>
+                <a href="#">cybersecurity</a>
+                <a href="#">sigurnost podataka</a>
+                <a href="#">backup</a>
+                <a href="#">malware</a>
+            </div>
+
+            <div class="post-share">
+                <span>Podijelite članak:</span>
+                <a href="#" class="share-button" data-platform="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-button" data-platform="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-button" data-platform="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="share-button" data-platform="email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Author Section -->
+        <section class="author-section">
+            <div class="author-container">
+                <div class="author-image">
+                    <img src="../images/author.jpg" alt="Ivan Horvat">
+                </div>
+                <div class="author-info">
+                    <h3>Ivan Horvat</h3>
+                    <p>Ivan je stručnjak za kibernetičku sigurnost s više od 10 godina iskustva u IT industriji. Specijaliziran je za sigurnost podataka, penetracijsko testiranje i odgovor na incidente. Redovito piše o temama vezanim uz cybersecurity i drži predavanja na stručnim konferencijama.</p>
+                    <div class="author-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+            <h2>Povezani članci</h2>
+            <div class="related-posts-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog-5.jpg" alt="Blog članak">
+                    </div>
+                    <div class="blog-content">
+                        <span class="post-category">Sigurnost</span>
+                        <span class="blog-date">10. srpnja 2025.</span>
+                        <h3>Važnost dvofaktorske autentifikacije u 2025. godini</h3>
+                        <p>Zašto je dvofaktorska autentifikacija ključna za sigurnost vaših online računa i kako je pravilno postaviti.</p>
+                        <a href="dvofaktorska-autentifikacija.html" class="read-more">Pročitajte više</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog-9.jpg" alt="Blog članak">
+                    </div>
+                    <div class="blog-content">
+                        <span class="post-category">Softver</span>
+                        <span class="blog-date">10. lipnja 2025.</span>
+                        <h3>Najbolji besplatni alati za zaštitu privatnosti na internetu</h3>
+                        <p>Pregled najkorisnijih besplatnih alata za zaštitu vaše privatnosti i sigurnosti tijekom korištenja interneta.</p>
+                        <a href="alati-za-privatnost.html" class="read-more">Pročitajte više</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="../images/blog-2.jpg" alt="Blog članak">
+                    </div>
+                    <div class="blog-content">
+                        <span class="post-category">Softver</span>
+                        <span class="blog-date">2. kolovoza 2025.</span>
+                        <h3>Nadogradnja na Windows 12 - što trebate znati</h3>
+                        <p>Vodič kroz proces nadogradnje na najnoviji Windows 12 i pregled novih funkcionalnosti.</p>
+                        <a href="windows-12-nadogradnja.html" class="read-more">Pročitajte više</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2>Pretplatite se na naš newsletter</h2>
+                    <p>Primajte najnovije članke, savjete i novosti direktno u vaš inbox</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Vaša email adresa" required>
+                        <button type="submit" class="btn btn-primary">Pretplatite se</button>
+                    </form>
+                    <p class="newsletter-privacy">Poštujemo vašu privatnost. Odjava je moguća u svakom trenutku.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo-white.svg" alt="Format Disc Logo">
+                    <p>Profesionalni servis računala</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Brzi linkovi</h4>
+                        <ul>
+                            <li><a href="../index.html#usluge">Usluge</a></li>
+                            <li><a href="../index.html#o-nama">O nama</a></li>
+                            <li><a href="../index.html#projekti">Projekti</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                            <li><a href="../index.html#kontakt">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Blog kategorije</h4>
+                        <ul>
+                            <li><a href="#">Sigurnost</a></li>
+                            <li><a href="#">Hardver</a></li>
+                            <li><a href="#">Softver</a></li>
+                            <li><a href="#">Mreže</a></li>
+                            <li><a href="#">Savjeti</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resursi</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Cjenik</a></li>
+                            <li><a href="#">Politika privatnosti</a></li>
+                            <li><a href="#">Uvjeti korištenja</a></li>
+                            <li><a href="#">Kolačići</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Format Disc. Sva prava pridržana.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="blog.js"></script>
+    <script>
+        // Initialize blog post specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize share buttons
+            initShareButtons();
+            
+            // Calculate reading time
+            calculateReadingTime();
+        });
+    </script>
+</body>
+</html>

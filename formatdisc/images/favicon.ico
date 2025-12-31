@@ -1,0 +1,47 @@
+<!-- This is a placeholder for the favicon.ico file -->
+<!-- In a real implementation, this would be a proper .ico file -->
+<!-- For now, we'll create an HTML file that explains this is a placeholder -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favicon Placeholder</title>
+  <style>
+    body {
+      font-family: 'SF Pro Display', -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      background-color: #0071e3;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">FD</div>
+    <h1>Favicon Placeholder</h1>
+    <p>This is a placeholder for the favicon.ico file. In a real implementation, this would be a proper .ico file with multiple sizes (16x16, 32x32, 48x48, etc.).</p>
+    <p>To create a real favicon, you would typically use a tool like <a href="https://realfavicongenerator.net/" target="_blank">Real Favicon Generator</a> or design one in a graphics program.</p>
+  </div>
+</body>
+</html>

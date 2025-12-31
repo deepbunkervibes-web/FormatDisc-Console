@@ -11,10 +11,12 @@ import { generateId, computeHash } from '../utils';
 
 interface LogoSynthesizerProps {
   onApply: (logoUrl: string) => void;
+  onReset: () => void;
+  hasCustomLogo: boolean;
   logToLedger: (type: string, details: string, metadata?: any) => Promise<void>;
 }
 
-export const LogoSynthesizer: React.FC<LogoSynthesizerProps> = ({ onApply, logToLedger }) => {
+export const LogoSynthesizer: React.FC<LogoSynthesizerProps> = ({ onApply, onReset, hasCustomLogo, logToLedger }) => {
   const [selectedIntent, setSelectedIntent] = useState<string>('professional_minimalist');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
@@ -165,6 +167,27 @@ export const LogoSynthesizer: React.FC<LogoSynthesizerProps> = ({ onApply, logTo
             APPLY_TO_FORMATDISC_SYSTEM
           </button>
         </div>
+      )}
+
+      {hasCustomLogo && (
+        <button 
+            onClick={onReset}
+            style={{
+                width: '100%',
+                marginTop: '12px',
+                background: 'transparent',
+                border: '1px solid var(--color-danger)',
+                color: 'var(--color-danger)',
+                padding: '12px',
+                fontSize: '0.7rem',
+                fontWeight: 900,
+                fontFamily: 'var(--font-mono)',
+                cursor: 'pointer',
+                opacity: 0.8
+            }}
+        >
+            RESET_TO_KERNEL_DEFAULT
+        </button>
       )}
     </div>
   );

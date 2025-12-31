@@ -1,0 +1,54 @@
+<!-- This is a placeholder for the tool-claude.png file -->
+<!-- In a real implementation, this would be a proper PNG image -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Claude Tool Icon</title>
+  <style>
+    body {
+      font-family: 'SF Pro Display', -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .icon-placeholder {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #6b3fa0, #5a2d92);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .tool-letter {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon-placeholder">
+      <div class="tool-letter">C</div>
+    </div>
+    <h1>Claude Icon</h1>
+    <p>This is a placeholder for the tool-claude.png file. In a real implementation, this would be the actual Claude logo.</p>
+  </div>
+</body>
+</html>

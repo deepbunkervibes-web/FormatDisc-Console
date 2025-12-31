@@ -1,0 +1,123 @@
+<!-- This is a placeholder for the slavkokernel.png file -->
+<!-- In a real implementation, this would be a proper PNG image -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SlavkoKernel Project Image Placeholder</title>
+  <style>
+    body {
+      font-family: 'SF Pro Display', -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+    }
+    .image-placeholder {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #0071e3, #34c759);
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .image-placeholder::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) rotate(45deg);
+      }
+      100% {
+        transform: translateX(100%) rotate(45deg);
+      }
+    }
+    .project-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    .xp-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 16px;
+      backdrop-filter: blur(5px);
+    }
+    .xp-badge i {
+      margin-right: 5px;
+    }
+    .level-bar {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .level-progress {
+      height: 100%;
+      width: 75%;
+      background: white;
+      border-radius: 5px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-placeholder">
+      <div>
+        <div class="project-icon">🧠</div>
+        <div>SlavkoKernel</div>
+        <div style="font-size: 18px; font-weight: normal; margin-top: 10px;">XP System for AI Interaction</div>
+      </div>
+      <div class="xp-badge">
+        <i>⭐</i> XP: 1250
+      </div>
+      <div class="level-bar">
+        <div class="level-progress"></div>
+      </div>
+    </div>
+    <h1>SlavkoKernel Project Image</h1>
+    <p>This is a placeholder for the slavkokernel.png file. In a real implementation, this would be a high-quality image showcasing the SlavkoKernel project interface or visualization.</p>
+    <p>For the actual website, consider using a screenshot of the system dashboard, a visualization of the XP system, or a conceptual illustration of the AI interaction model.</p>
+  </div>
+</body>
+</html>

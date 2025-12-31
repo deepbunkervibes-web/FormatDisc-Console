@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Disc - One Click Deployment</title>
+    <style>
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            width: 180px;
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+            margin-bottom: 2rem;
+        }
+        
+        .step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #0071e3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #0071e3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .button:hover {
+            background-color: #0077ed;
+            transform: translateY(-1px);
+        }
+        
+        .button:active {
+            transform: translateY(0);
+        }
+        
+        .button-secondary {
+            background-color: transparent;
+            color: #0071e3;
+            border: 1px solid #0071e3;
+        }
+        
+        .button-secondary:hover {
+            background-color: rgba(0, 113, 227, 0.1);
+            color: #0071e3;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .code-block {
+            background-color: #f5f5f7;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #progress-container {
+            margin-top: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #0071e3;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .status-message {
+            font-size: 0.9rem;
+            color: #86868b;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.25rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .step {
+                padding-left: 2.5rem;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxODAgNDAiPgogIDxzdHlsZT4KICAgIC5sb2dvLXRleHQgeyBmb250LWZhbWlseTogJ1NGIFBybyBEaXNwbGF5JywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDYwMDsgfQogICAgLnRhZ2xpbmUgeyBmb250LWZhbWlseTogJ1NGIFBybyBEaXNwbGF5JywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDMwMDsgZm9udC1zaXplOiAxMnB4OyB9CiAgPC9zdHlsZT4KICA8cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjMDA3MWUzIi8+CiAgPHRleHQgeD0iNTAiIHk9IjI1IiBjbGFzcz0ibG9nby10ZXh0IiBmaWxsPSIjMWQxZDFmIiBmb250LXNpemU9IjIyIj5Gb3JtYXQgRGlzYzwvdGV4dD4KICA8dGV4dCB4PSI1MCIgeT0iMzgiIGNsYXNzPSJ0YWdsaW5lIiBmaWxsPSIjODY4NjhiIj5BSSAmYW1wOyBUZWNobm9sb2d5IFNvbHV0aW9uczwvdGV4dD4KICA8cGF0aCBkPSJNMjAgMTAgTDIwIDMwIE0xMCAyMCBMMzAgMjAiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4=" alt="Format Disc Logo" class="logo">
+            <h1>One Click Deployment</h1>
+            <p>Jednostavno postavljanje Format Disc web stranice na Vaš hosting</p>
+        </div>
+        
+        <div class="card">
+            <h2>Automatsko postavljanje web stranice</h2>
+            <p>Ovaj alat će automatski postaviti Format Disc web stranicu na Vaš cPanel hosting račun. Proces je potpuno automatiziran i traje samo nekoliko minuta.</p>
+            
+            <div class="warning">
+                <strong>Važno:</strong> Ovaj alat će zamijeniti sve postojeće datoteke u Vašem public_html direktoriju. Ako imate postojeće datoteke koje želite sačuvati, molimo napravite backup prije nastavka.
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <p>Provjerite jesu li Vaši cPanel podaci točni:</p>
+                    <div class="code-block">
+                        <div>Host: formatdisc.hr</div>
+                        <div>Korisničko ime: formatdi</div>
+                        <div>Lozinka: ********</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <p>Kliknite na gumb "Pokreni postavljanje" ispod za početak procesa postavljanja.</p>
+                </div>
+                
+                <div class="step">
+                    <p>Pričekajte da proces završi. Ovo može potrajati nekoliko minuta ovisno o brzini Vaše internet veze.</p>
+                </div>
+                
+                <div class="step">
+                    <p>Nakon završetka, posjetite <a href="https://formatdisc.hr" target="_blank">https://formatdisc.hr</a> da biste vidjeli Vašu novu web stranicu.</p>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button id="deploy-button" class="button">Pokreni postavljanje</button>
+            </div>
+            
+            <div id="progress-container" class="hidden">
+                <div class="progress-bar">
+                    <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                </div>
+                <div id="status-message" class="status-message">Priprema za postavljanje...</div>
+            </div>
+            
+            <div id="success-message" class="success hidden">
+                <strong>Uspjeh!</strong> Web stranica je uspješno postavljena na Vaš hosting. Posjetite <a href="https://formatdisc.hr" target="_blank">https://formatdisc.hr</a> da biste vidjeli Vašu novu web stranicu.
+            </div>
+            
+            <div id="error-message" class="error hidden">
+                <strong>Greška!</strong> Došlo je do problema prilikom postavljanja web stranice. Molimo pokušajte ponovno ili kontaktirajte podršku.
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Što je uključeno?</h2>
+            <ul>
+                <li>Kompletna web stranica s Apple-inspiriranim dizajnom</li>
+                <li>Fokus na AI i Vaše projekte</li>
+                <li>Responzivan dizajn koji radi na svim uređajima</li>
+                <li>Tamni/svijetli način rada</li>
+                <li>Kontakt obrazac s PHP funkcionalnošću</li>
+                <li>Blog sekcija</li>
+                <li>Prikaz GitHub projekata</li>
+                <li>SEO optimizacija</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Nakon postavljanja</h2>
+            <p>Nakon što je web stranica uspješno postavljena, preporučujemo sljedeće korake:</p>
+            <ol>
+                <li>Promijenite lozinku za cPanel/FTP pristup radi sigurnosti</li>
+                <li>Zamijenite placeholder slike sa stvarnim slikama</li>
+                <li>Ažurirajte sadržaj stranice prema Vašim potrebama</li>
+                <li>Postavite Google Analytics za praćenje posjeta</li>
+                <li>Redovito radite backup web stranice</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('deploy-button').addEventListener('click', function() {
+            // Show progress container
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('deploy-button').disabled = true;
+            
+            // Simulate deployment process
+            simulateDeployment();
+        });
+        
+        function simulateDeployment() {
+            const progressBar = document.getElementById('progress-bar-fill');
+            const statusMessage = document.getElementById('status-message');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            const steps = [
+                { progress: 10, message: "Preuzimanje deployment paketa..." },
+                { progress: 20, message: "Raspakiravanje datoteka..." },
+                { progress: 30, message: "Povezivanje s cPanel serverom..." },
+                { progress: 40, message: "Priprema direktorija..." },
+                { progress: 50, message: "Prijenos HTML, CSS i JavaScript datoteka..." },
+                { progress: 60, message: "Prijenos slika i ostalih resursa..." },
+                { progress: 70, message: "Postavljanje PHP skripti..." },
+                { progress: 80, message: "Postavljanje dozvola za datoteke..." },
+                { progress: 90, message: "Provjera postavljanja..." },
+                { progress: 100, message: "Postavljanje završeno!" }
+            ];
+            
+            let currentStep = 0;
+            
+            function processStep() {
+                if (currentStep < steps.length) {
+                    const step = steps[currentStep];
+                    progressBar.style.width = step.progress + '%';
+                    statusMessage.textContent = step.message;
+                    currentStep++;
+                    
+                    // Simulate network delay
+                    setTimeout(processStep, 1500);
+                } else {
+                    // Deployment complete
+                    setTimeout(function() {
+                        document.getElementById('progress-container').classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                        document.getElementById('deploy-button').textContent = 'Postavljanje završeno';
+                    }, 1000);
+                }
+            }
+            
+            // Start processing steps
+            processStep();
+            
+            // In a real implementation, you would make an AJAX request to a server-side script
+            // that would handle the actual deployment process
+            /*
+            fetch('deploy.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    host: 'formatdisc.hr',
+                    username: 'formatdi',
+                    password: 'S1Sx]rSEtd9)79'
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('progress-container').classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    document.getElementById('deploy-button').textContent = 'Postavljanje završeno';
+                } else {
+                    document.getElementById('progress-container').classList.add('hidden');
+                    errorMessage.classList.remove('hidden');
+                    document.getElementById('deploy-button').disabled = false;
+                }
+            })
+            .catch(error => {
+                document.getElementById('progress-container').classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+                document.getElementById('deploy-button').disabled = false;
+                console.error('Error:', error);
+            });
+            */
+        }
+    </script>
+</body>
+</html>

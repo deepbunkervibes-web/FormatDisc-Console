@@ -12,7 +12,7 @@ import { generateId, computeHash } from './utils';
 import { INITIAL_PLACEHOLDERS } from './constants';
 
 import ArtifactCard from './components/ArtifactCard';
-import { KernelIcon, CodeIcon, SparklesIcon, GridIcon, MessageSquareIcon, DatabaseIcon, BrushIcon } from './components/Icons';
+import { KernelIcon, CodeIcon, SparklesIcon, GridIcon, MessageSquareIcon, DatabaseIcon, BrushIcon, ActivityIcon } from './components/Icons';
 import ErrorBoundary from './components/ErrorBoundary';
 import DottedGlowBackground from './components/DottedGlowBackground';
 import { SlavkoTribunal } from './components/SlavkoTribunal';
@@ -23,6 +23,7 @@ import { CookieConsent } from './components/CookieConsent';
 import { ForensicLedger } from './components/ForensicLedger';
 import { B3DeconstructorPanel } from './components/ForensicDeconstructor';
 import { LogoSynthesizer } from './components/LogoSynthesizer';
+import { OrchestrationSimulator } from './components/OrchestrationSimulator'; // Import the new simulator component
 import type { InterceptionLog } from './telemetry/types';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 
@@ -44,7 +45,7 @@ const GLOBAL_ANTIGRAVITY_RULESET = `
 
 function AppContent() {
   const { isAuthenticated, user, isLoading: isAuthLoading } = useAuth();
-  const [trinityMode, setTrinityMode] = useState<'shell' | 'fusion' | 'score' | 'vault' | 'branding'>('shell');
+  const [trinityMode, setTrinityMode] = useState<'shell' | 'fusion' | 'score' | 'vault' | 'branding' | 'simulator'>('shell'); // Add 'simulator' mode
   const [sessions, setSessions] = useState<Session[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [swarmMode, setSwarmMode] = useState<boolean>(false);
@@ -85,6 +86,11 @@ function AppContent() {
   const handleLogoUpdate = (logoUrl: string) => {
     setCustomLogo(logoUrl);
     localStorage.setItem('formatdisc-custom-logo', logoUrl);
+  };
+
+  const handleLogoReset = () => {
+    setCustomLogo(null);
+    localStorage.removeItem('formatdisc-custom-logo');
   };
 
   const logToLedger = async (type: string, details: string, metadata: any = {}) => {
@@ -289,7 +295,11 @@ function AppContent() {
           ) : trinityMode === 'vault' ? (
             <div style={{ padding: '40px' }}><ForensicLedger logToLedger={logToLedger} /></div>
           ) : trinityMode === 'branding' ? (
-            <div style={{ padding: '40px' }}><LogoSynthesizer onApply={handleLogoUpdate} logToLedger={logToLedger} /></div>
+            <div style={{ padding: '40px' }}><LogoSynthesizer onApply={handleLogoUpdate} onReset={handleLogoReset} hasCustomLogo={!!customLogo} logToLedger={logToLedger} /></div>
+          ) : trinityMode === 'simulator' ? (
+            <div className="simulator-container" style={{ width: '100vw', height: '100vh', position: 'fixed', inset: 0, zIndex: 100 }}>
+              <OrchestrationSimulator />
+            </div>
           ) : (
             <div className="content-scroller" style={{ padding: '40px' }}>
               {sessions.length === 0 ? (
@@ -377,6 +387,10 @@ function AppContent() {
           <button className={`nav-item ${trinityMode === 'vault' ? 'active' : ''}`} onClick={() => {setTrinityMode('vault'); setFocusedArtifactId(null);}}>
             <div className="icon-bg"><DatabaseIcon variant={trinityMode === 'vault' ? 'active' : 'idle'} /></div>
             VAULT
+          </button>
+          <button className={`nav-item ${trinityMode === 'simulator' ? 'active' : ''}`} onClick={() => {setTrinityMode('simulator'); setFocusedArtifactId(null);}}>
+            <div className="icon-bg"><ActivityIcon variant={trinityMode === 'simulator' ? 'active' : 'idle'} /></div>
+            SIMULATOR
           </button>
           <button className="nav-item" onClick={() => setIsFeedbackDrawerOpen(true)}>
             <div className="icon-bg"><MessageSquareIcon variant="idle" /></div>
